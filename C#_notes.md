@@ -1,4 +1,4 @@
-# Difference between abstract and virtual
+## Difference between abstract and virtual
 
 **An abstract function cannot have functionality.** You're basically saying, any child class MUST give their own version of this method, however it's too general to even try to implement in the parent class.
 
