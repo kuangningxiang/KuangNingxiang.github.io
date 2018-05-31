@@ -114,3 +114,5 @@ $(function() {
     }
   });
 });
+
+https://stackoverflow.com/questions/38001100/highcharts-drilldown-and-combining-chart-type
