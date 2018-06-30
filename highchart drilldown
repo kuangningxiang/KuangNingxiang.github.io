@@ -1,0 +1,118 @@
+$(function() {
+  // Create the chart
+  $('#container').highcharts({
+    chart: {
+      type: 'column',
+      events: {
+        drilldown: function(e) {
+          var chart = this,
+            drilldowns = chart.userOptions.drilldown.series,
+            series = [];
+          e.preventDefault();
+          Highcharts.each(drilldowns, function(p, i) {
+            if (p.id.includes(e.point.name)) {
+              chart.addSingleSeriesAsDrilldown(e.point, p);
+            }
+          });
+          chart.applyDrilldown();
+        }
+      }
+    },
+    title: {
+      text: 'Browser market shares. January, 2015 to May, 2015'
+    },
+    subtitle: {
+      text: 'Click the columns to view versions. Source: <a href="http://netmarketshare.com">netmarketshare.com</a>.'
+    },
+    xAxis: {
+      type: 'category'
+    },
+    yAxis: [{
+      title: {
+        text: 'Total percent market share'
+      }
+
+    }, {
+      title: {
+        text: 'cost'
+      },
+      opposite: true
+    }],
+    legend: {
+      enabled: false
+    },
+    plotOptions: {
+      series: {
+        borderWidth: 0,
+        dataLabels: {
+          enabled: true,
+          format: '{point.y:.1f}%'
+        }
+      }
+    },
+
+    tooltip: {
+      headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+      pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>'
+    },
+
+    series: [{
+      name: 'Brands',
+      colorByPoint: true,
+      data: [{
+        name: 'Microsoft Internet Explorer',
+        y: 56.33,
+        drilldown: 'Microsoft Internet Explorer'
+      }, {
+        name: 'Chrome',
+        y: 24.03,
+        drilldown: 'Chrome'
+      }]
+    }],
+    drilldown: {
+      series: [{
+        name: 'Microsoft Internet Explorer',
+        id: 'Microsoft Internet Explorer',
+        type: 'column',
+        data: [
+          ['v11', 25],
+          ['v8', 17],
+          ['v9', 8],
+          ['v10', 5],
+          ['v7', 3]
+        ]
+      }, {
+        name: 'Microsoft Internet Explorer Cost',
+        id: 'Microsoft Internet Explorer',
+        type: 'spline',
+        yAxis: 1,
+        data: [
+          ['v11', 50],
+          ['v8', 40],
+          ['v9', 60],
+          ['v10', 65],
+          ['v7', 73]
+        ]
+      }, {
+        name: 'Chrome',
+        id: 'Chrome',
+        data: [
+          ['v40.0', 5],
+          ['v41.0', 4.32],
+          ['v42.0', 3.68]
+        ]
+      },{
+        name: 'Chrome',
+        id: 'Chrome',
+        type:'spline',
+        data: [
+          ['v40.0', 5],
+          ['v41.0', 4.32],
+          ['v42.0', 3.68]
+        ]
+      }]
+    }
+  });
+});
+
+https://stackoverflow.com/questions/38001100/highcharts-drilldown-and-combining-chart-type
