@@ -8,4 +8,3 @@ solution: pip uninstall pyasn1 && pip install pyasn1
 
 Create Project
 scrapy startproject jobdb_redis
-
