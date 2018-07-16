@@ -1,6 +1,6 @@
 /* Big tablet to 1200px (widths smaller taht the 1140px row) */
 @media only screen and (max-width: 1200px) {
-    .hero-text-box {
+    .head-line-box {
         width: 100%;
         padding: 0 2%;
     }
@@ -50,7 +50,7 @@
     section { padding: 30px 0; }
     
     .row,
-    .hero-text-box { padding: 0 4%; }
+    .head-line-box { padding: 0 4%; }
     .col { 
         width: 100%;
         margin: 0 0 4% 0;
@@ -64,6 +64,7 @@
         float: left;
         margin-top: 30px;
         margin-left: 25px;
+        border:1px solid red;
     }
     
     .main-nav li {
